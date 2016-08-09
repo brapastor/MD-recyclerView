@@ -3,6 +3,7 @@ package com.example.brapastor.mdrecyclerview;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,10 +12,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TableLayout;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
+    TabLayout tabs;
     //RecyclerView.LayoutManager layoutManager;
     String [] Data = new String[]{"Element 1", "Element 2", "Element 3","Element 4", "Element 5", "Element 6", "Element 7", "Element 8",
                                     "Element 9", "Element 10", "Element 11", "Element 12", "Element 13", "Element 14", "Element 15"};
@@ -27,8 +30,17 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        tabs = (TabLayout) findViewById(R.id.tabs);
+        tabs.setTabMode(TabLayout.MODE_FIXED);
+        tabs.addTab(tabs.newTab().setText("Tab 1"));
+        tabs.addTab(tabs.newTab().setText("Tab 2"));
+        tabs.addTab(tabs.newTab().setText("Tab 3"));
+        tabs.addTab(tabs.newTab().setText("Tab 4"));
+
+
         recyclerView = (RecyclerView) findViewById(R.id.rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+
 
         adapter = new RecyclerAdapter(Data);
         recyclerView.setAdapter(adapter);
